@@ -16,16 +16,16 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         // Create permissions
-        Permission::create(['name' => 'view_profile']);
         Permission::create(['name' => 'view_users']);
+        Permission::create(['name' => 'view_profile']);
 
-        // Create roles
-        $role_user = Role::create(['name' => 'user']);
+        // Create roles        
         $role_admin = Role::create(['name' => 'admin']);
+        $role_user = Role::create(['name' => 'user']);
 
         // Sync roles with permissions
-        $role_user->givePermissionTo('view_profile');
         $role_admin->givePermissionTo(Permission::all());
+        $role_user->givePermissionTo('view_profile');
 
         // Assign roles to demo users
         $admin = User::find(1);

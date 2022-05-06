@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\Profile;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
@@ -55,7 +55,7 @@ class AuthController extends Controller
      */
     public function user()
     {
-        return new UserResource(Auth::user());
+        return new Profile(Auth::user());
     }
 
     /**

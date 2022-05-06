@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
-use App\Http\Resources\Profile;
+use App\Http\Resources\Frontend\Profile;
 use App\Models\User;
-use App\Http\Requests\RegisterRequest;
-use App\Http\Requests\LoginRequest;
+use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\Auth\LoginRequest;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 

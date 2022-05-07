@@ -1,12 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\AdminController;
 
-Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
-
-Route::group(['prefix' => 'api/backend', 'middleware' => 'auth:sanctum'])->group(function () {
-    Route::get('user', [AuthController::class, 'user']);
-    Route::get('logout', [AuthController::class, 'logout']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware('role:admin')->group(function () {
+        Route::get('users', [AdminController::class, 'index']);
+    });
 });

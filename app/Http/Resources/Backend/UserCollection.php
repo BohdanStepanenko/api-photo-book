@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Backend;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
@@ -15,19 +15,7 @@ class UserCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'id'            => (string)$this->id,
-            'attributes'    =>
-            [
-                'name'          => $this->name,
-                'surname'       => $this->surname,
-                'created_at'    => $this->created_at,
-                'email'         => $this->email,
-
-                /*TODO:
-                 - Purchases
-                 - Last Activity
-                */
-            ],
+            'data' => $this->collection
         ];
     }
 }

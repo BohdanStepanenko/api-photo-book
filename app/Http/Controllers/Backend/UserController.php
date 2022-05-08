@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Mobile;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Mobile\User\UpdateRequest;
+use App\Http\Resources\Backend\UserCollection as ResourcesUserCollection;
+use App\Http\Requests\Backend\User\UpdateRequest;
 use App\Http\Resources\Mobile\Profile;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -11,13 +12,13 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     /**
-     * Display the specified resource.
+     * Display a listing of the resource.
      *
-     * @return App\Http\Resources\Profile
+     * @return App\Http\Resources\Backend\UserCollection
      */
-    public function show()
+    public function index()
     {
-        return new Profile(Auth::user());
+        return new ResourcesUserCollection(User::all());
     }
 
     /**
@@ -32,5 +33,12 @@ class UserController extends Controller
         $user->update($request->validated());
 
         return new Profile($user);
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return response()->noContent();
     }
 }

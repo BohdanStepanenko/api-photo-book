@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Mobile;
+namespace App\Http\Requests\Backend\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -11,10 +11,10 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|between:2,50',
-            'surname' => 'required|string|between:2,50',
-            'email' => 'required|string|email|max:100|unique:users',
-            'phone' => 'required|regex:/(27)[0-9]{9}/'
+            'name' => 'string|between:2,50',
+            'surname' => 'string|between:2,50',
+            'email' => 'string|email|max:100|unique:users',
+            'phone' => 'regex:/(27)[0-9]{9}/'
         ];
     }
 

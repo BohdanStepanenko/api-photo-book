@@ -11,4 +11,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('logout', [AuthController::class, 'logout']);
     Route::get('profile', [UserController::class, 'show']);
     Route::put('profile', [UserController::class, 'update']);
+    Route::apiResource('books', BookController::class);
 });

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Mobile;
+namespace App\Http\Resources\Backend\User;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Profile extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,7 +21,7 @@ class Profile extends JsonResource
                 'name'          => $this->name,
                 'surname'       => $this->surname,
                 'email'         => $this->email,
-                'phone'         => $this->phone
+                'created_at'    => $this->created_at
             ],
         ];
     }

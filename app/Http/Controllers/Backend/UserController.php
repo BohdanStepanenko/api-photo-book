@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use App\Http\Resources\Backend\User\UserCollection;
 use App\Http\Resources\Backend\User\UserResource;
-use App\Http\Requests\User\CreateRequest;
+use App\Http\Requests\User\UserCreateRequest;
 use App\Models\User;
 
 class UserController extends Controller
@@ -25,10 +25,10 @@ class UserController extends Controller
     /**
      * Create new admin.
      *
-     * @param  App\Http\Requests\Book\CreateRequest $request
+     * @param  App\Http\Requests\User\UserCreateRequest $request
      * @return App\Http\Resources\Mobile\BookResource
      */
-    public function store(CreateRequest $request)
+    public function store(UserCreateRequest $request)
     {
         $admin = User::create(
             array_merge(

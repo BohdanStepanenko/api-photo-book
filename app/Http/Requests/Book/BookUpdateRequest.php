@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Photo;
+namespace App\Http\Requests\Book;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 use App\Models\Book;
 
-class CreateRequest extends FormRequest
+class BookUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,11 +16,12 @@ class CreateRequest extends FormRequest
      */
     public function authorize()
     {
-        $book_id = request()->get('book_id');
+        $book_id = $this->route('book')->id;
         $book = Book::where('id', '=', $book_id)->first();
 
         return auth()->user()->id === $book->user_id;
     }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -29,9 +30,9 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'required|image:jpeg,png,jpg,gif,svg|max:2048',
-            'title' => 'string|between:2,50',
-            'book_id' => 'required|integer'
+            'name' => 'string|between:2,50',
+            'pages' => 'integer|in:50,100',
+            'cover_id' => 'integer|between:1,3'
         ];
     }
 
@@ -42,15 +43,5 @@ class CreateRequest extends FormRequest
             'message'   => 'Validation errors',
             'data'      => $validator->errors()
         ]));
-    }
-
-    public function messages()
-    {
-        return [
-            'photo.required' => 'Photo is required',
-            'photo.image' => 'Photo should be jpeg,png,jpg,gif,svg format',
-            'photo.max' => 'Photo max size is 2MB',
-            'book_id.required' => 'Book to upload is required'
-        ];
     }
 }

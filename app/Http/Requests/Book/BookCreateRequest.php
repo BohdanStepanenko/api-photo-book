@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
-class CreateRequest extends FormRequest
+class BookCreateRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.

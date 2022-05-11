@@ -5,7 +5,7 @@ namespace App\Http\Requests\Book;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Book;
 
-class DeleteRequest extends FormRequest
+class BookDeleteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

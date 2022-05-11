@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
-class UpdateRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
     public function rules()
     {

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Photo;
+namespace App\Http\Requests\Book;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Photo;
 use App\Models\Book;
 
-class ShowRequest extends FormRequest
+class BookShowRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,8 +14,7 @@ class ShowRequest extends FormRequest
      */
     public function authorize()
     {
-        $photo_id = $this->route('photo')->id;
-        $book_id = Photo::where('id', '=', $photo_id)->pluck('book_id');
+        $book_id = $this->route('book')->id;
         $book = Book::where('id', '=', $book_id)->first();
 
         return auth()->user()->id === $book->user_id;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Mobile;
+namespace App\Http\Resources\Mobile\Photo;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 

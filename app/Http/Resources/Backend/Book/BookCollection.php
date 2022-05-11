@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Backend;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use App\Http\Resources\Backend\Book\BookResource;
 
 class BookCollection extends ResourceCollection
 {
@@ -14,8 +15,6 @@ class BookCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
-            'data' => $this->collection
-        ];
+        return BookResource::collection($this->collection);
     }
 }

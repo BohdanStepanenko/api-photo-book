@@ -7,7 +7,7 @@ use App\Http\Requests\Book\BookCreateRequest;
 use App\Http\Requests\Book\BookShowRequest;
 use App\Http\Requests\Book\BookUpdateRequest;
 use App\Http\Requests\Book\BookDeleteRequest;
-use App\Http\Resources\Mobile\BookResource;
+use App\Http\Resources\Mobile\Book\BookResource;
 use App\Models\Book;
 
 class BookController extends Controller
@@ -16,7 +16,7 @@ class BookController extends Controller
      * Update the specified resource in storage.
      *
      * @param  App\Http\Requests\Book\BookCreateRequest $request
-     * @return App\Http\Resources\Mobile\BookResource
+     * @return App\Http\Resources\Mobile\Book\BookResource
      */
     public function store(BookCreateRequest $request)
     {
@@ -30,7 +30,7 @@ class BookController extends Controller
      *
      * @param App\Http\Requests\BookShowRequest
      * @param  App\Models\Book $book
-     * @return App\Http\Resources\Mobile\BookResource
+     * @return App\Http\Resources\Mobile\Book\BookResource
      */
     public function show(BookShowRequest $request, Book $book)
     {
@@ -42,7 +42,7 @@ class BookController extends Controller
      *
      * @param  App\Http\Requests\Book\BookUpdateRequest  $request
      * @param  App\Models\Book $book
-     * @return App\Http\Resources\Mobile\BookResource
+     * @return App\Http\Resources\Mobile\Book\BookResource
      */
     public function update(BookUpdateRequest $request, Book $book)
     {

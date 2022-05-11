@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Backend\User;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use App\Http\Resources\Backend\User\UserResource;
 
 class UserCollection extends ResourceCollection
 {
@@ -14,8 +15,6 @@ class UserCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
-            'data' => $this->collection
-        ];
+        return UserResource::collection($this->collection);
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Photo\PhotoCreateRequest;
 use App\Http\Requests\Photo\PhotoShowRequest;
 use App\Http\Requests\Photo\PhotoDeleteRequest;
-use App\Http\Resources\Mobile\PhotoResource;
+use App\Http\Resources\Mobile\Photo\PhotoResource;
 use App\Models\Photo;
 
 class PhotoController extends Controller
@@ -16,7 +16,7 @@ class PhotoController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  App\Http\Requests\Photo\PhotoCreateRequest  $request
-     * @return App\Http\Resources\Mobile\PhotoResource
+     * @return App\Http\Resources\Mobile\Photo\PhotoResource
      */
     public function store(PhotoCreateRequest $request)
     {
@@ -42,7 +42,7 @@ class PhotoController extends Controller
      * @param App\Http\Requests\Photo\PhotoShowRequest
      * @param App\Models\Photo $photo
      *
-     * @return App\Http\Resources\Mobile\PhotoResource
+     * @return App\Http\Resources\Mobile\Photo\PhotoResource
      */
     public function show(PhotoShowRequest $request, Photo $photo)
     {

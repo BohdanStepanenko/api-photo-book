@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Mobile;
+namespace App\Http\Resources\Mobile\Book;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,7 +18,6 @@ class BookResource extends JsonResource
             'id'            => (string)$this->id,
             'attributes'    =>
             [
-                'user_id'       => $this->user_id,
                 'name'          => $this->name,
                 'pages'         => $this->pages,
                 'cover_id'      => $this->cover_id,

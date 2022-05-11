@@ -22,7 +22,7 @@ class PhotoController extends Controller
     {
         $file = $request->file('photo');
         $file_name = $file->getClientOriginalName();
-        $file_path = auth()->user()->id . '/books/' . $request->book_id;
+        $file_path = 'users/photos/' . auth()->user()->id . '/books/' . $request->book_id;
 
         Storage::putFileAs($file_path, $file, $file_name);
 

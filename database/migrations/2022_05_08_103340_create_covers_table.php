@@ -15,7 +15,9 @@ class CreateCoversTable extends Migration
     {
         Schema::create('covers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable();
             $table->string('title');
+            $table->string('path');
         });
     }
 

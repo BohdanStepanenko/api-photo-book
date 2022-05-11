@@ -308,7 +308,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2|CQBcQWMifmcFM8ZcqxlWQaoxZc7XAdhD7EeMK0oT",
+									"value": "3|TUJyKHwKnoSyqSa0uDLJBN6i6z8xRpk2Zz3pTEJ8",
 									"type": "string"
 								}
 							]
@@ -641,6 +641,137 @@
 							"path": [
 								"api",
 								"books",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Covers",
+			"item": [
+				{
+					"name": "Users cover",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|As860IcPCcJq1yYeByMTuzdQJAeXzVS7iG5j2Ckh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/covers/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"covers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store cover",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|As860IcPCcJq1yYeByMTuzdQJAeXzVS7iG5j2Ckh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cover",
+									"description": "New cover to upload",
+									"type": "file",
+									"src": "/C:/Users/Probook/Desktop/Main/Setup/Рабочие проекты 2021/main_2021/play_google.png"
+								},
+								{
+									"key": "title",
+									"value": "New cover title",
+									"description": "New cover title",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/covers/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"covers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete cover",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|As860IcPCcJq1yYeByMTuzdQJAeXzVS7iG5j2Ckh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/covers/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"covers",
 								"4"
 							]
 						}

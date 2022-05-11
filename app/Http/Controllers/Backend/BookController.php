@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Backend\BookCollection;
+use App\Http\Resources\Backend\Book\BookCollection;
 use App\Models\Book;
 
 class BookController extends Controller
@@ -11,7 +11,7 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return App\Http\Resources\Backend\BookCollection
+     * @return App\Http\Resources\Backend\Book\BookCollection
      */
     public function index()
     {

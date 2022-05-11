@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Backend;
+namespace App\Http\Resources\Backend\Book;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use App\Http\Resources\Backend\Book\BookResource;

@@ -18,6 +18,7 @@ class CreateCoversTable extends Migration
             $table->foreignId('user_id')->nullable();
             $table->string('title');
             $table->string('path');
+            $table->timestamps();
         });
     }
 

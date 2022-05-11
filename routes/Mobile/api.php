@@ -13,4 +13,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('profile', [UserController::class, 'update']);
     Route::apiResource('books', BookController::class);
     Route::apiResource('photos', PhotoController::class);
+    Route::apiResource('covers', CoverController::class);
 });

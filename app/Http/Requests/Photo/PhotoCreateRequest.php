@@ -21,6 +21,7 @@ class PhotoCreateRequest extends FormRequest
 
         return auth()->user()->id === $book->user_id;
     }
+
     /**
      * Get the validation rules that apply to the request.
      *

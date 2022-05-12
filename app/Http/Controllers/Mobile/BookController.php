@@ -7,11 +7,22 @@ use App\Http\Requests\Book\BookCreateRequest;
 use App\Http\Requests\Book\BookShowRequest;
 use App\Http\Requests\Book\BookUpdateRequest;
 use App\Http\Requests\Book\BookDeleteRequest;
+use App\Http\Resources\Mobile\Book\BookCollection;
 use App\Http\Resources\Mobile\Book\BookResource;
 use App\Models\Book;
 
 class BookController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return App\Http\Resources\Backend\Book\BookCollection
+     */
+    public function index()
+    {
+        return new BookCollection(Book::paginate());
+    }
+
     /**
      * Update the specified resource in storage.
      *

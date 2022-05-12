@@ -20,7 +20,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return new BookCollection(Book::paginate());
+        $book = Book::where('user_id', '=', auth()->user()->id)->paginate();
+        return new BookCollection($book);
     }
 
     /**

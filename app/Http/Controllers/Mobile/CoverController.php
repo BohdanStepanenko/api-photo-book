@@ -7,11 +7,26 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Cover\CoverCreateRequest;
 use App\Http\Requests\Cover\CoverShowRequest;
 use App\Http\Requests\Cover\CoverDeleteRequest;
+use App\Http\Resources\Mobile\Cover\CoverCollection;
 use App\Http\Resources\Mobile\Cover\CoverResource;
 use App\Models\Cover;
 
 class CoverController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return App\Http\Resources\Backend\Book\BookCollection
+     */
+    public function index()
+    {
+        $covers = Cover::where('user_id', '=', auth()->user()->id)
+            ->orWhere('user_id', '=', null)
+            ->paginate();
+
+        return new CoverCollection($covers);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

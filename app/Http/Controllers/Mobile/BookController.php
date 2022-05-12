@@ -9,7 +9,6 @@ use App\Http\Requests\Book\BookUpdateRequest;
 use App\Http\Requests\Book\BookDeleteRequest;
 use App\Http\Resources\Mobile\Book\BookCollection;
 use App\Http\Resources\Mobile\Book\BookResource;
-use App\Http\Resources\Mobile\Photo\PhotoResource;
 use App\Models\Book;
 
 class BookController extends Controller
@@ -21,9 +20,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        $book = Book::where('user_id', '=', auth()->user()->id)->paginate();
+        $books = Book::where('user_id', '=', auth()->user()->id)->paginate();
 
-        return new BookCollection($book);
+        return new BookCollection($books);
     }
 
     /**

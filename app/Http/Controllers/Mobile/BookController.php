@@ -16,7 +16,7 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return App\Http\Resources\Backend\Book\BookCollection
+     * @return App\Http\Resources\Mobile\Book\BookCollection
      */
     public function index()
     {

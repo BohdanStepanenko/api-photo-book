@@ -16,7 +16,7 @@ class CoverController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return App\Http\Resources\Backend\Book\BookCollection
+     * @return App\Http\Resources\Mobile\Cover\CoverCollection
      */
     public function index()
     {

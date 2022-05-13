@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Backend\User;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
-class UpdateRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
     public function rules()
     {
@@ -14,7 +14,7 @@ class UpdateRequest extends FormRequest
             'name' => 'string|between:2,50',
             'surname' => 'string|between:2,50',
             'email' => 'string|email|max:100|unique:users',
-            'phone' => 'regex:/(27)[0-9]{9}/'
+            'phone' => 'regex:/(\+27)[0-9]{9}/'
         ];
     }
 

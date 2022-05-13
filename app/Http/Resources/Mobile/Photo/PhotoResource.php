@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Mobile;
+namespace App\Http\Resources\Mobile\Photo;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Profile extends JsonResource
+class PhotoResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,10 +18,10 @@ class Profile extends JsonResource
             'id'            => (string)$this->id,
             'attributes'    =>
             [
-                'name'          => $this->name,
-                'surname'       => $this->surname,
-                'email'         => $this->email,
-                'phone'         => $this->phone
+                'book_id'       => $this->book_id,
+                'title'         => $this->title,
+                'path'          => $this->path,
+                'created_at'    => $this->created_at
             ],
         ];
     }

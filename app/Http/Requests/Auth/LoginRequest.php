@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Mobile;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
-class RegisterRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -16,10 +16,7 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|between:2,50',
-            'surname' => 'required|string|between:2,50',
-            'email' => 'required|string|email|max:100|unique:users',
-            'phone' => 'required|regex:/(27)[0-9]{9}/',
+            'email' => 'required|email',
             'password' => 'required|string|between:6,12'
         ];
     }
@@ -36,11 +33,8 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Name is required',
-            'surname.required' => 'Surname is required',
             'email.required' => 'Email is required',
-            'email.email' => 'Incorrect Email field',
-            'phone.required' => 'Phone is required',
+            'email.email' => 'Incorrect Login field',
             'password.required' => 'Password is required'
         ];
     }

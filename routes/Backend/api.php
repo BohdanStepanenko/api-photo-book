@@ -1,12 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\BookController;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::middleware('role:admin')->group(function () {
-        Route::get('users', [UserController::class, 'index']);
-        Route::put('user', [UserController::class, 'update']);
-        Route::delete('user/{id}', [UserController::class, 'destroy']);
+        Route::apiResource('users', UserController::class);
+        Route::get('books', [BookController::class, 'index']);
     });
 });

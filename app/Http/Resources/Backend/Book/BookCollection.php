@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Resources\Backend;
+namespace App\Http\Resources\Backend\Book;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use App\Http\Resources\Backend\Book\BookResource;
 
-class UserCollection extends ResourceCollection
+class BookCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -14,8 +15,6 @@ class UserCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
-            'data' => $this->collection
-        ];
+        return BookResource::collection($this->collection);
     }
 }

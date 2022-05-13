@@ -3,83 +3,78 @@
 namespace App\Http\Controllers\Mobile;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Book\BookCreateRequest;
+use App\Http\Requests\Book\BookShowRequest;
+use App\Http\Requests\Book\BookUpdateRequest;
+use App\Http\Requests\Book\BookDeleteRequest;
+use App\Http\Resources\Mobile\Book\BookCollection;
+use App\Http\Resources\Mobile\Book\BookResource;
+use App\Models\Book;
 
 class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return App\Http\Resources\Backend\Book\BookCollection
      */
     public function index()
     {
-        //
-    }
+        $books = Book::where('user_id', '=', auth()->user()->id)->paginate();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return new BookCollection($books);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  App\Http\Requests\Book\BookCreateRequest $request
+     * @return App\Http\Resources\Mobile\Book\BookResource
      */
-    public function update(Request $request, $id)
+    public function store(BookCreateRequest $request)
     {
-        //
+        $book = Book::create($request->validated());
+
+        return new BookResource($book);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param App\Http\Requests\BookShowRequest
+     * @param  App\Models\Book $book
+     * @return App\Http\Resources\Mobile\Book\BookResource
+     */
+    public function show(BookShowRequest $request, Book $book)
+    {
+        return (new BookResource($book))->additional(['photo' => $book->photos]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  App\Http\Requests\Book\BookUpdateRequest  $request
+     * @param  App\Models\Book $book
+     * @return App\Http\Resources\Mobile\Book\BookResource
+     */
+    public function update(BookUpdateRequest $request, Book $book)
+    {
+        $book->update($request->validated());
+
+        return new BookResource($book);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  App\Http\Requests\Book\BookDeleteRequest  $request
+     * @param  App\Models\Book $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BookDeleteRequest $request, Book $book)
     {
-        //
+        $book->delete();
+
+        return response()->noContent();
     }
 }

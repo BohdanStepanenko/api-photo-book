@@ -3,41 +3,59 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Backend\UserCollection as ResourcesUserCollection;
-use App\Http\Requests\Backend\User\UpdateRequest;
-use App\Http\Resources\Mobile\Profile;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+use App\Http\Resources\Backend\User\UserCollection;
+use App\Http\Resources\Backend\User\UserResource;
+use App\Http\Requests\User\UserCreateRequest;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return App\Http\Resources\Backend\UserCollection
+     * @return App\Http\Resources\Backend\User\UserCollection
      */
     public function index()
     {
-        return new ResourcesUserCollection(User::all());
+        return new UserCollection(User::paginate());
     }
 
     /**
-     * Update the specified resource in storage.
+     * Create new admin.
      *
-     * @param  App\Http\Requests\UpdateRequest $request
-     * @return \Illuminate\Http\Response
+     * @param  App\Http\Requests\User\UserCreateRequest $request
+     * @return App\Http\Resources\Mobile\BookResource
      */
-    public function update(UpdateRequest $request)
+    public function store(UserCreateRequest $request)
     {
-        $user = User::findOrFail(Auth::user()->id);
-        $user->update($request->validated());
+        $admin = User::create(
+            array_merge(
+                $request->validated(),
+                ['password' => Hash::make($request->password)]
+            )
+        );
 
-        return new Profile($user);
+        $admin->createToken('auth_token')->plainTextToken;
+        $admin->assignRole('admin');
+
+        return new UserResource($admin);
     }
 
-    public function destroy(User $user)
+    /**
+     * Remove admin.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        $user->delete();
+        $user = User::findOrFail($id);
+
+        if ($user->hasRole('admin')) {
+            $user->delete();
+        }
 
         return response()->noContent();
     }

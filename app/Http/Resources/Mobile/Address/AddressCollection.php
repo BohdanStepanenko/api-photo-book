@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Mobile\Book;
+namespace App\Http\Resources\Mobile\Address;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class BookCollection extends ResourceCollection
+class AddressCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -14,6 +14,6 @@ class BookCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return BookResource::collection($this->collection);
+        return parent::toArray($request);
     }
 }

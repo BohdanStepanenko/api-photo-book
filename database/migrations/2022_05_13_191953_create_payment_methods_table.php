@@ -16,10 +16,8 @@ class CreatePaymentMethodsTable extends Migration
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->bigInteger('card_number')->unique();
-            $table->string('card_owner');
-            $table->string('expiration_date');
-            $table->unsignedInteger('cvv');
+            $table->string('last_four');
+            $table->string('card_token');
             $table->timestamps();
         });
     }

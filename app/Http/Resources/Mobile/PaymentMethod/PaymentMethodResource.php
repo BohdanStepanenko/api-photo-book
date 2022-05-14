@@ -19,10 +19,8 @@ class PaymentMethodResource extends JsonResource
             'attributes'    =>
             [
                 'user_id'           => $this->user_id,
-                'card_owner'        => $this->name,
-                'card_number'       => $this->pages,
-                'expiration_date'   => $this->cover_id,
-                'cvv'               => $this->cvv,
+                'last_four'         => $this->last_four,
+                'card_token'        => $this->card_token,
                 'created_at'        => $this->created_at
             ],
         ];

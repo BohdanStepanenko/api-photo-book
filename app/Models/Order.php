@@ -9,7 +9,25 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'id',
+        'user_id',
+        'book_id',
+        'address_id',
+        'quantity',
+        'note',
+        'amount',
+        'status',
+        'created_at',
+        'updated_at',
+        'name',
+        'surname',
+        'phone',
+        'email',
+        'full_address',
+        'pages',
+        'cover_id'
+    ];
 
     /**
      * The "booted" method of the model.
@@ -28,13 +46,18 @@ class Order extends Model
         });
     }
 
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function addresses()
     {
-        return $this->hasOne(Address::class);
+        return $this->belongsTo(Address::class, 'address_id');
     }
 
     public function books()
     {
-        return $this->hasOne(Book::class);
+        return $this->belongsTo(Book::class, 'book_id');
     }
 }

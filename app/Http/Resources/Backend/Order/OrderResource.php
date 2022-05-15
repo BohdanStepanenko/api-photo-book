@@ -15,15 +15,16 @@ class OrderResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'            => (string)$this->id,
-            'attributes'    =>
-            [
-                'book_id'       => $this->book_id,
-                'address_id'    => $this->address_id,
-                'quantity'      => $this->quantity,
-                'note'          => $this->note,
-                'status'        => $this->status
-            ],
+            'order_number'      => (string)$this->id,
+            'order_date'        => $this->created_at,
+            'quantity'          => $this->quantity,
+            'status'            => $this->status,
+            'book_id'           => $this->book_id,
+            'pages_quantity'    => $this->books->pages,
+            'delivery_address'  => $this->addresses->full_address,
+            'user_email'        => $this->users->email,
+            'user_phone_number' => $this->users->phone,
+            'note'              => $this->note
         ];
     }
 }

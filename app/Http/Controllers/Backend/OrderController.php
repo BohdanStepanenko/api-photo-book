@@ -29,9 +29,8 @@ class OrderController extends Controller
      * @param  App\Models\Order $order
      * @return App\Http\Resources\Mobile\Order\OrderResource
      */
-    public function update(OrderUpdateRequest $request, $id)
+    public function update(OrderUpdateRequest $request, Order $order)
     {
-        $order = Order::findOrFail($id);
         $order->update($request->validated());
 
         return new OrderResource($order);

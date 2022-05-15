@@ -9,6 +9,7 @@ use App\Http\Resources\Mobile\Order\OrderResource;
 use App\Models\PaymentMethod;
 use App\Models\Order;
 use App\Models\Book;
+use App\Models\Cover;
 
 class OrderController extends Controller
 {
@@ -21,10 +22,11 @@ class OrderController extends Controller
     public function store(OrderCreateRequest $request)
     {
         $selected_book = Book::findOrFail($request->book_id);
+        $selected_cover_paid = Cover::where('user_id', '=', auth()->user()->id)->first();
         $selected_payment = PaymentMethod::findOrFail($request->payment_method);
 
         $price_including_pages = $selected_book->pages == 50 ? 30 : 50;
-        $price_including_cover = $selected_book->cover_id < 3 ? 0 : 10;
+        $price_including_cover = is_null($selected_cover_paid) ? 0 : 10;
         $amount = $price_including_pages + $price_including_cover;
 
         $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
@@ -57,10 +59,8 @@ class OrderController extends Controller
      * @param  App\Models\Order $order
      * @return App\Http\Resources\Mobile\Order\OrderResource
      */
-    public function show(OrderShowRequest $request, $id)
+    public function show(OrderShowRequest $request, Order $order)
     {
-        $order = Order::findOrFail($id);
-
         return new OrderResource($order);
     }
 }

@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Book::class);
     }
+
+    public function localPaymentMethods()
+    {
+        return $this->hasMany(PaymentMethod::class);
+    }
 }

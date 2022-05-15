@@ -67,7 +67,7 @@ class CoverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param App\Http\Requests\Cover\CoveroDeleteRequest
+     * @param App\Http\Requests\Cover\CoverDeleteRequest
      * @param App\Models\Cover $cover
      * @return \Illuminate\Http\Response
      */

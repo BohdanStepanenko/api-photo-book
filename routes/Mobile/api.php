@@ -15,4 +15,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('photos', PhotoController::class);
     Route::apiResource('covers', CoverController::class);
     Route::apiResource('addresses', AddressController::class);
+    Route::apiResource('payment-methods', PaymentMethodController::class);
 });

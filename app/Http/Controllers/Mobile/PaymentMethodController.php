@@ -33,22 +33,32 @@ class PaymentMethodController extends Controller
     public function store(PaymentMethodCreateRequest $request)
     {
         list($expiration_month, $expiration_year) = explode('/', $request->expiration_date);
+        $email = auth()->user()->email;
 
         $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
-        $token = $stripe->tokens->create([
+
+
+        $customer = $stripe->customers->create([
+            'email' => $email,
+            'description' => 'customer ' . $email,
+        ]);
+
+        $card = $stripe->tokens->create([
             'card' => [
                 'name' => $request->card_owner,
                 'number' => $request->card_number,
                 'exp_month' => $expiration_month,
                 'exp_year' => $expiration_year,
                 'cvc' => $request->cvc,
+                'customer' => $customer->id
             ],
         ]);
 
         $payment_method = PaymentMethod::create(
             array_merge(
-                ['last_four' => $token->card->last4],
-                ['card_token' => $token->card->id]
+                ['last_four' => $card->card->last4],
+                ['customer_token' => $customer->id],
+                ['card_token' => $card->card->id]
             )
         );
 

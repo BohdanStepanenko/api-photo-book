@@ -14,7 +14,7 @@ class OrderShowRequest extends FormRequest
      */
     public function authorize()
     {
-        $id = $this->route()->parameter('id');
+        $id = $this->route('order')->id;
         $order = Order::findOrFail($id);
 
         return auth()->user()->id === $order->user_id;

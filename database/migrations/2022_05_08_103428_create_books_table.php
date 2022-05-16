@@ -18,7 +18,7 @@ class CreateBooksTable extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('name', 50);
             $table->unsignedInteger('pages')->default(50);
-            $table->foreignId('cover_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('cover_id')->constrained('covers')->cascadeOnDelete();
             $table->timestamps();
         });
     }

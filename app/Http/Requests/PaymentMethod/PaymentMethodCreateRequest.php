@@ -20,7 +20,6 @@ class PaymentMethodCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'card_owner' => 'required|string|between:2,50',
             'card_number' => 'required|digits:16',
             'expiration_date' =>  ['required', 'regex:/^(0[1-9]|1[0-2])\/?([2-3]{2})$/'],
             'cvv' => 'required|digits:3'

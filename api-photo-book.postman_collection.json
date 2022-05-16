@@ -79,7 +79,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "gustave11@example.net",
+									"value": "tomasa.terry@example.com",
 									"description": "Auth login",
 									"type": "text"
 								},
@@ -339,6 +339,93 @@
 					"response": []
 				},
 				{
+					"name": "Orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|MLTn5pwLqnP8trhtUQTagTldafnIyLMPv5nBILx0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/backend/orders",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"backend",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|wqYCjTznj8XwxieJotMhbfsNAXGxZjDxSlt6vCNU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "status",
+									"value": "sent to the postal service",
+									"description": "Update status",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/backend/order/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"backend",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Store admin",
 					"request": {
 						"auth": {
@@ -439,8 +526,322 @@
 			]
 		},
 		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "User Address LIst",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|TUJyKHwKnoSyqSa0uDLJBN6i6z8xRpk2Zz3pTEJ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/books",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users address",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|As860IcPCcJq1yYeByMTuzdQJAeXzVS7iG5j2Ckh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/addresses/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"addresses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|As860IcPCcJq1yYeByMTuzdQJAeXzVS7iG5j2Ckh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Home",
+									"description": "Add address name",
+									"type": "text"
+								},
+								{
+									"key": "full_address",
+									"value": "Kharkiv, Ukraine, Nauki square, 6",
+									"description": "Add full address",
+									"type": "text"
+								},
+								{
+									"key": "apartment",
+									"value": "89",
+									"description": "Add apartment",
+									"type": "text"
+								},
+								{
+									"key": "postcode",
+									"value": "61100",
+									"description": "Add postcode",
+									"type": "text"
+								},
+								{
+									"key": "contact_person_name",
+									"value": "David",
+									"description": "Add contact person name",
+									"type": "text"
+								},
+								{
+									"key": "contact_person_phone",
+									"value": "+270846548888",
+									"description": "Add contact person phone",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/addresses/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"addresses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|CQBcQWMifmcFM8ZcqxlWQaoxZc7XAdhD7EeMK0oT",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Updated",
+									"description": "Updated book name",
+									"type": "text"
+								},
+								{
+									"key": "pages",
+									"value": "50",
+									"description": "Updated book pages count",
+									"type": "text"
+								},
+								{
+									"key": "cover_id",
+									"value": "3",
+									"description": "Updated book cover type",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/addresses/4?name=Home&full_address=Kharkiv, Ukraine, Nauki square, 6&apartment=89&postcode=61100",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"addresses",
+								"4"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Home",
+									"description": "Updated address name"
+								},
+								{
+									"key": "full_address",
+									"value": "Kharkiv, Ukraine, Nauki square, 6",
+									"description": "Updated full address"
+								},
+								{
+									"key": "apartment",
+									"value": "89",
+									"description": "Updated apartment"
+								},
+								{
+									"key": "postcode",
+									"value": "61100",
+									"description": "Updated postcode"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|As860IcPCcJq1yYeByMTuzdQJAeXzVS7iG5j2Ckh",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/addresses/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"addresses",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Book",
 			"item": [
+				{
+					"name": "User Book LIst",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|TUJyKHwKnoSyqSa0uDLJBN6i6z8xRpk2Zz3pTEJ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/books",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Users book",
 					"protocolProfileBehavior": {
@@ -650,8 +1051,48 @@
 			]
 		},
 		{
-			"name": "Covers",
+			"name": "Cover",
 			"item": [
+				{
+					"name": "User Cover LIst",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|fmYcOgffsqek0XfHjSCEnSrcFBC8KeDHLpzE0kXi",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/covers",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"covers"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Users cover",
 					"protocolProfileBehavior": {
@@ -910,6 +1351,327 @@
 								"api",
 								"books",
 								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment method",
+			"item": [
+				{
+					"name": "User Payment method List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|Q4b5QZFsduIxA7xotwSl6vR5XFL7QbD0BmIMTiTR",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "card_owner",
+									"value": "New owner",
+									"description": "New card owner",
+									"type": "text"
+								},
+								{
+									"key": "card_number",
+									"value": "4242424242424242",
+									"description": "New card number",
+									"type": "text"
+								},
+								{
+									"key": "expiration_date",
+									"value": "12/23",
+									"description": "New card expiration date",
+									"type": "text"
+								},
+								{
+									"key": "cvv",
+									"value": "123",
+									"description": "New card CVV",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/payment-methods/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"payment-methods",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users payment method",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|MLTn5pwLqnP8trhtUQTagTldafnIyLMPv5nBILx0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/payment-methods/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"payment-methods",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store payment method",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|1p9EcZI6CkcAiqvQpuc9z2xw5FMAGV7z1OWjg516",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "card_number",
+									"value": "4242424242424242",
+									"description": "New card number",
+									"type": "text"
+								},
+								{
+									"key": "expiration_date",
+									"value": "12/23",
+									"description": "New card expiration date",
+									"type": "text"
+								},
+								{
+									"key": "cvv",
+									"value": "125",
+									"description": "New card CVV",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/payment-methods/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"payment-methods",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete payment method",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|MLTn5pwLqnP8trhtUQTagTldafnIyLMPv5nBILx0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/payment-methods/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"payment-methods",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Users order",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|dTC4I30KOwifJW2GvQ6lGu3WpfkvunlCxWoWS1Bn",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|dTC4I30KOwifJW2GvQ6lGu3WpfkvunlCxWoWS1Bn",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "book_id",
+									"value": "2",
+									"description": "Select book",
+									"type": "text"
+								},
+								{
+									"key": "address_id",
+									"value": "3",
+									"description": "Select address",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "1",
+									"description": "Select books quantity",
+									"type": "text"
+								},
+								{
+									"key": "note",
+									"value": "",
+									"description": "Add some note to order",
+									"type": "text"
+								},
+								{
+									"key": "payment_method",
+									"value": "1",
+									"description": "Select payment method",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/orders",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders"
 							]
 						}
 					},

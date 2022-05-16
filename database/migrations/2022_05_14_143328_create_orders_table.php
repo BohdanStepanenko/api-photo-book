@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentMethodsTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreatePaymentMethodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payment_methods', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->string('last_four');
-            $table->string('customer_token');
-            $table->string('card_token');
+            $table->foreignId('book_id');
+            $table->foreignId('address_id');
+            $table->integer('quantity');
+            $table->string('note')->nullable();
+            $table->float('amount');
+            $table->string('status')->default('not paid');
             $table->timestamps();
         });
     }
@@ -31,7 +34,7 @@ class CreatePaymentMethodsTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('payment_methods');
+        Schema::dropIfExists('orders');
         Schema::enableForeignKeyConstraints();
     }
 }

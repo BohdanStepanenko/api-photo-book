@@ -43,4 +43,9 @@ class Book extends Model
     {
         return $this->hasMany(Photo::class);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

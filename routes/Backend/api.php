@@ -7,5 +7,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::middleware('role:admin')->group(function () {
         Route::apiResource('users', UserController::class);
         Route::get('books', [BookController::class, 'index']);
+        Route::apiResource('orders', OrderController::class)->only(['index', 'update']);
     });
 });
